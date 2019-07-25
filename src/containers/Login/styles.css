@@ -1,0 +1,17 @@
+.login-container {
+  margin-top: 4em;
+  padding: 4em 12% 7em 12%;
+  border: 1px solid #bd96eb;
+  border-radius: 2%;
+}
+
+.forgot-password--link {
+  font-size: 0.8em;
+  color : #bd96eb;
+  text-decoration: none;
+}
+
+.forgot-password--link:hover {
+  color : #79589F;
+  text-decoration: none;
+}
