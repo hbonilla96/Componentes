@@ -25,7 +25,7 @@ class Login extends React.Component {
                 <div className="row">
                   <div className="col-md-12">
                     <FontAwesomeIcon icon="coffee" />
-                    <h2>Welcome Back, Kevin!</h2>
+                    <h3>Welcome Back!</h3>
                     <p>Please login to enter your account</p>
                   </div>
                 </div>
