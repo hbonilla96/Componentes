@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/login" exact component={Login} />
+          <Route path="/" exact component={Login} />
           <Route path="/home" exact component={Home}/>
           <Route component={NotFound} />
         </Switch>
