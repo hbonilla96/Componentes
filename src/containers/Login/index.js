@@ -24,7 +24,7 @@ class Login extends React.Component {
               <div className="login-container">
                 <div className="row">
                   <div className="col-md-12">
-                    <FontAwesomeIcon icon="coffee" />
+                    <FontAwesomeIcon icon="person-booth" />
                     <h3>Welcome Back!</h3>
                     <p>Please login to enter your account</p>
                   </div>

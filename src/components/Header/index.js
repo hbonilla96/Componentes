@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './styles.css';
 
-export default function (props) {
+const GeneralHeader = (props) => {
   return (
     <div className="header-container">
       <div className="row">
@@ -20,5 +21,36 @@ export default function (props) {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function (props) {
+  const [login, setLogin] = useState(true);
+  if (login) {
+    return (
+      <div className="header-container">
+        <div className="row">
+          <div className="col-md-2">
+            <p className="logo-container">Logo</p>
+          </div>
+          <div className="col-md-10">
+            <ul className="nav justify-content-end">
+              <li className="nav-item">
+                <a className="nav-link custom-anchor" href={'/#'}>
+                  <FontAwesomeIcon icon="person-booth" />
+                  Kevin
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link custom-anchor" href={'/#'}>Log out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <GeneralHeader />
   )
 }

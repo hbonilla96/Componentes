@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 import StackGrid from "react-stack-grid";
+
+import Loader from '../Loading';
 import './styles.css';
 
 const randomIdImage = () => {
@@ -33,17 +35,22 @@ class CardImage extends React.Component {
     super()
     this.state = {
       perPage: 10,
+      loading: true,
       timer: null,
       images: [],
     }
   }
 
   componentDidMount() {
+    // this.setState({loading : true});
     axios.get(`https://picsum.photos/v2/list`)
       .then(res => {
         const persons = res.data;
         console.log('pictures', res);
         this.setState({ images: persons });
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 3000);
       })
   };
   // useEffect(() => {
@@ -53,10 +60,17 @@ class CardImage extends React.Component {
 
   render() {
     console.log('Random number', randomIdImage())
-
-    return (
-      <ImageComponent images={this.state.images} />
-    );
+    if (this.state.loading) {
+      return (
+        <React.Fragment>
+          <Loader />
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <ImageComponent images={this.state.images} />
+      );
+    }
   }
 };
 
