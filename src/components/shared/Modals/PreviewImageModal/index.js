@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import SavePinToBoard from '@/redux/ActionCreators/SavePin';
+
 import {
   Button,
   Modal,
@@ -6,13 +9,24 @@ import {
   ModalBody,
   ModalFooter,
   Form,
-  FormGroup,
   Label,
   Input,
-  FormText,
 } from '@/components/shared/CssComponents';
 
 import './styles.css';
+
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps)
+  return {
+    pins: state.login.login,
+    isLoading: state.login.isLoading,
+    error: state.login.error
+  }
+}
+
+const mapDispatchToProps = {
+  SavePinToBoard
+}
 
 class PreviewImageModal extends React.Component {
   constructor(props) {
@@ -45,12 +59,14 @@ class PreviewImageModal extends React.Component {
                       <option>Other</option>
                     </Input>
                   </Form>
+                  <p>Or Create new board</p>
+                  <Button color="primary" onClick={this.props.toggle}>Create new Board</Button>
                 </div>
               </div>
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.props.toggle}>Pin Image</Button>{' '}
+            <Button color="primary" onClick={this.props.SavePinToBoard}>Pin Image</Button>{' '}
             <Button color="secondary" onClick={this.props.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
@@ -59,4 +75,4 @@ class PreviewImageModal extends React.Component {
   }
 }
 
-export default PreviewImageModal;
+export default connect(mapStateToProps, mapDispatchToProps)(PreviewImageModal);
