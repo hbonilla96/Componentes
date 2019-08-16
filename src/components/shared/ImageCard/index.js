@@ -4,26 +4,24 @@ import { Link } from "react-router-dom";
 import StackGrid from "react-stack-grid";
 
 import Loader from '../Loading';
+import Card from './Card';
 import './styles.css';
+import { PreviewImageModal } from '@/components/shared/Modals';
 
 const randomIdImage = () => {
   return Math.round(Math.random() * (1016 - 1001) + 1001);
 };
 
 const ImageComponent = (props) => {
-  const { images } = props;
+  const { images, toggleModal } = props;
   return (
     <StackGrid
       columnWidth={270}
     >
       {
         images.map((e, index) => (
-          <div key={index}>
-            <Link to={`/${index}`}>
-              <div className="card" style={{ width: '16rem' }}>
-                <img src={e.download_url} className="card-img-top" alt="..." />
-              </div>
-            </Link>
+          <div key={index} onClick={() => toggleModal(e)} >
+            <Card element={e} />
           </div>
         ))
       }
@@ -38,7 +36,16 @@ class CardImage extends React.Component {
       loading: true,
       timer: null,
       images: [],
+      modal: false,
+      currentImage: null,
     }
+  }
+
+  toggle = (element) => {
+    this.setState(prevState => ({
+      modal: !prevState.modal,
+      currentImage: element,
+    }));
   }
 
   componentDidMount() {
@@ -68,7 +75,17 @@ class CardImage extends React.Component {
       )
     } else {
       return (
-        <ImageComponent images={this.state.images} />
+        <React.Fragment>
+          <ImageComponent images={this.state.images} toggleModal={this.toggle} />
+          <PreviewImageModal
+            modal={this.state.modal}
+            toggle={this.toggle}
+            image={this.state.currentImage}
+            params={{
+              modalTitle: 'Add Image to board',
+            }
+            } />
+        </React.Fragment>
       );
     }
   }

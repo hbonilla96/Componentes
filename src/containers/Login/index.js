@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../../components/Header';
-import Input from '../../components/shared/forms/input';
-import { SubmitBtn } from '../../components/shared/forms/buttons';
+import Header from '@/components/Header';
+import Input from '@/components/shared/forms/input';
+import { SubmitBtn } from '@/components/shared/forms/buttons';
 
 // Styles
 import './styles.css';
@@ -25,15 +25,17 @@ class Login extends React.Component {
                 <div className="row">
                   <div className="col-md-12">
                     <FontAwesomeIcon icon="person-booth" />
-                    <h3>Welcome Back!</h3>
+                    <h3>Welcome!</h3>
                     <p>Please login to enter your account</p>
                   </div>
+                  <div className="col-md-12">
+                    <form>
+                      <Input label={'Email'} type={'email'} placeholder={'Email'} id={'emailInput'} />
+                      <Input label={'Password'} type={'password'} placeholder={'Password'} id={'passwordInput'} />
+                      <SubmitBtn text={'Continue'} />
+                    </form>
+                  </div>
                 </div>
-                <form>
-                  <Input label={'Email'} type={'email'} placeholder={'Email'} />
-                  <Input label={'Password'} type={'password'} placeholder={'Password'} />
-                  <SubmitBtn text={'Continue'} />
-                </form>
                 <div className="forgot-passwort--container">
                   <div className="row">
                     <div className="col-md-12">

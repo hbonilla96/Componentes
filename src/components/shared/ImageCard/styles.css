@@ -1,0 +1,6 @@
+.image-card {
+  cursor : pointer;
+}
+.custom-image:hover {
+  opacity: 0.8;
+}
