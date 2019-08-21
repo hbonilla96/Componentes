@@ -7,7 +7,7 @@ const GeneralHeader = (props) => {
     <div className="header-container">
       <div className="row">
         <div className="col-md-2">
-          <p className="logo-container">Logo</p>
+          <a className="logo-container nav-link custom-anchor" href={'/home'}>Logo</a>
         </div>
         <div className="col-md-10">
           <ul className="nav justify-content-end">
@@ -15,7 +15,7 @@ const GeneralHeader = (props) => {
               <a className="nav-link custom-anchor" href={'/#'}>Sign Up</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link custom-anchor" href={'/#'}>Login</a>
+              <a className="nav-link custom-anchor" href={'/'}>Login</a>
             </li>
           </ul>
         </div>
@@ -31,18 +31,18 @@ export default function (props) {
       <div className="header-container">
         <div className="row">
           <div className="col-md-2">
-            <p className="logo-container">Logo</p>
+            <a className="logo-container nav-link custom-anchor" href={'/home'}>Logo</a>
           </div>
           <div className="col-md-10">
             <ul className="nav justify-content-end">
               <li className="nav-item">
-                <a className="nav-link custom-anchor" href={'/#'}>
+                <a className="nav-link custom-anchor" href={'/profile'}>
                   <FontAwesomeIcon icon="person-booth" />
                   Kevin
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link custom-anchor" href={'/#'}>Log out</a>
+                <a className="nav-link custom-anchor" href={'/'}>Log out</a>
               </li>
             </ul>
           </div>

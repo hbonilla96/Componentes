@@ -1,5 +1,6 @@
 import {
   Button,
+  Col,
   Media,
   Modal,
   ModalHeader,
@@ -15,6 +16,8 @@ import {
 export {
   // B
   Button,
+  // C
+  Col,
   // F
   Form,
   FormGroup,

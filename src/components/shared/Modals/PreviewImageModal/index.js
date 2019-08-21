@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import SavePinToBoard from '@/redux/ActionCreators/SavePin';
+import { NewTableModal } from '@/components/shared/Modals';
 
 import {
   Button,
@@ -31,8 +32,22 @@ const mapDispatchToProps = {
 class PreviewImageModal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      modals: {
+        table: false,
+      }
+    };
   }
+
+  openTableModal = () => {
+    this.setState({
+      modals: {
+        table: !this.state.modals.table,
+      }
+    })
+  }
+
+
   render() {
     console.log('props modal', this.props);
     return (
@@ -60,7 +75,7 @@ class PreviewImageModal extends React.Component {
                     </Input>
                   </Form>
                   <p>Or Create new board</p>
-                  <Button color="primary" onClick={this.props.toggle}>Create new Board</Button>
+                  <Button color="primary" onClick={this.openTableModal}>Create new Board</Button>
                 </div>
               </div>
             </div>
@@ -70,6 +85,14 @@ class PreviewImageModal extends React.Component {
             <Button color="secondary" onClick={this.props.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
+        <NewTableModal
+          modal={this.state.modals.table}
+          toggle={this.openTableModal}
+          image={this.props.image}
+          params={{
+            modalTitle: 'Create board',
+          }
+          } />
       </div>
     )
   }
