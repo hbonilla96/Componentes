@@ -12,7 +12,7 @@ const GeneralHeader = (props) => {
         <div className="col-md-10">
           <ul className="nav justify-content-end">
             <li className="nav-item">
-              <a className="nav-link custom-anchor" href={'/#'}>Sign Up</a>
+              <a className="nav-link custom-anchor" href={'/signup'}>Sign Up</a>
             </li>
             <li className="nav-item">
               <a className="nav-link custom-anchor" href={'/'}>Login</a>
@@ -25,7 +25,7 @@ const GeneralHeader = (props) => {
 }
 
 export default function (props) {
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   if (login) {
     return (
       <div className="header-container">
