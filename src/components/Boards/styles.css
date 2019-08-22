@@ -1,3 +1,7 @@
+.card-individual--element {
+  border-radius: 2%;
+}
+
 .image-temp--container {
   width: 150px;
   height: 150px;

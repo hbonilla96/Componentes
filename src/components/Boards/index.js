@@ -8,7 +8,7 @@ import './styles.css';
 
 export default () => {
   return (
-    <Card>
+    <Card className="card-individual--element">
       <CardBody>
         <div className="board-images--wrapper">
           <div className="row">
