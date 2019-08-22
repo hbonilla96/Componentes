@@ -1,7 +1,8 @@
 import React from 'react';
+import { Button } from '@/components/shared/CssComponents';
 
 export default (props) => {
   return (
-    <button type="button" className="btn btn-primary">{props.text}</button>
+    <Button color="primary">{props.text}</Button>
   )
 }
