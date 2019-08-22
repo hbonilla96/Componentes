@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './styles.css';
 
@@ -7,15 +8,15 @@ const GeneralHeader = (props) => {
     <div className="header-container">
       <div className="row">
         <div className="col-md-2">
-          <a className="logo-container nav-link custom-anchor" href={'/home'}>Logo</a>
+          <Link className="logo-container nav-link custom-anchor" to={'/home'}>Logo</Link>
         </div>
         <div className="col-md-10">
           <ul className="nav justify-content-end">
             <li className="nav-item">
-              <a className="nav-link custom-anchor" href={'/signup'}>Sign Up</a>
+              <Link className="nav-link custom-anchor" to={'/signup'}>Sign Up</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link custom-anchor" href={'/'}>Login</a>
+              <Link className="nav-link custom-anchor" to={'/'}>Login</Link>
             </li>
           </ul>
         </div>
@@ -25,24 +26,24 @@ const GeneralHeader = (props) => {
 }
 
 export default function (props) {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
   if (login) {
     return (
       <div className="header-container">
         <div className="row">
           <div className="col-md-2">
-            <a className="logo-container nav-link custom-anchor" href={'/home'}>Logo</a>
+            <Link className="logo-container nav-link custom-anchor" to={'/home'}>Logo</Link>
           </div>
           <div className="col-md-10">
             <ul className="nav justify-content-end">
               <li className="nav-item">
-                <a className="nav-link custom-anchor" href={'/profile'}>
+                <Link className="nav-link custom-anchor" to={'/boards'}>
                   <FontAwesomeIcon icon="person-booth" />
                   Kevin
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link custom-anchor" href={'/'}>Log out</a>
+                <Link className="nav-link custom-anchor" to={'/'}>Log out</Link>
               </li>
             </ul>
           </div>

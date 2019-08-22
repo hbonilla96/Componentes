@@ -11,6 +11,12 @@ import {
   Label,
   Input,
   FormText,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
 } from 'reactstrap';
 
 export {
@@ -18,6 +24,12 @@ export {
   Button,
   // C
   Col,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
   // F
   Form,
   FormGroup,
