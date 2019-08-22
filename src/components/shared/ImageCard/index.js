@@ -1,89 +1,93 @@
 import React from 'react';
+import axios from 'axios';
 import { Link } from "react-router-dom";
 import StackGrid from "react-stack-grid";
 
-class CardImage extends React.Component {
-  constructor (props) {
-    super()
-    this.state = {
-      perPage: 10,
-      images : [
-        {
-          width : '200',
-          height : '400',
-        },
-        {
-          width : '300',
-          height : '400',
-        },
-        {
-          width : '400',
-          height : '200',
-        },
-        {
-          width : '400',
-          height : '200',
-        },
-        {
-          width : '200',
-          height : '400',
-        },
-        {
-          width : '300',
-          height : '400',
-        },
-        {
-          width : '400',
-          height : '200',
-        },
-        {
-          width : '400',
-          height : '200',
-        },
-        {
-          width : '400',
-          height : '200',
-        },
-        {
-          width : '200',
-          height : '400',
-        },
-        {
-          width : '300',
-          height : '400',
-        },
-        {
-          width : '400',
-          height : '200',
-        },
-        {
-          width : '400',
-          height : '200',
-        },
-      ]
-    }
-  }
-  render () {
-    return (
-      <StackGrid
-        columnWidth={300}
-      >
+import Loader from '../Loading';
+import Card from './Card';
+import './styles.css';
+import { PreviewImageModal } from '@/components/shared/Modals';
+
+const randomIdImage = () => {
+  return Math.round(Math.random() * (1016 - 1001) + 1001);
+};
+
+const ImageComponent = (props) => {
+  const { images, toggleModal } = props;
+  return (
+    <StackGrid
+      columnWidth={270}
+    >
       {
-        this.state.images.map((e, index) => (
-          <div key={index}>
-            <div className="card" style={{ width: '18rem' }}>
-              <img src={`https://dummyimage.com/${e.width}x${e.height}/000/fff`} className="card-img-top" alt="..."/>
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <Link to="/home" className="btn btn-primary">Go somewhere</Link>
-              </div>
-            </div>
+        images.map((e, index) => (
+          <div key={index} onClick={() => toggleModal(e)} >
+            <Card element={e} />
           </div>
         ))
       }
-      </StackGrid>
-    );
+    </StackGrid>
+  );
+}
+class CardImage extends React.Component {
+  constructor(props) {
+    super()
+    this.state = {
+      perPage: 10,
+      loading: true,
+      timer: null,
+      images: [],
+      modal: false,
+      currentImage: null,
+    }
+  }
+
+  toggle = (element) => {
+    this.setState(prevState => ({
+      modal: !prevState.modal,
+      currentImage: element,
+    }));
+  }
+
+  componentDidMount() {
+    // this.setState({loading : true});
+    axios.get(`https://picsum.photos/v2/list`)
+      .then(res => {
+        const persons = res.data;
+        console.log('pictures', res);
+        this.setState({ images: persons });
+        setTimeout(() => {
+          this.setState({ loading: false });
+        }, 3000);
+      })
+  };
+  // useEffect(() => {
+  //   // Actualiza el título del documento usando la API del navegador
+  //   document.title = `You clicked ${count} times`;
+  // });
+
+  render() {
+    console.log('Random number', randomIdImage())
+    if (this.state.loading) {
+      return (
+        <React.Fragment>
+          <Loader />
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <ImageComponent images={this.state.images} toggleModal={this.toggle} />
+          <PreviewImageModal
+            modal={this.state.modal}
+            toggle={this.toggle}
+            image={this.state.currentImage}
+            params={{
+              modalTitle: 'Add Image to board',
+            }
+            } />
+        </React.Fragment>
+      );
+    }
   }
 };
 
