@@ -2,9 +2,14 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 
 // import your icons
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCoffee,
+  faPersonBooth,
+  faHome,
+} from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faCoffee,
-  // more icons go here
+  faPersonBooth,
+  faHome,
 );

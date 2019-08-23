@@ -8,7 +8,9 @@ const GeneralHeader = (props) => {
     <div className="header-container">
       <div className="row">
         <div className="col-md-2">
-          <Link className="logo-container nav-link custom-anchor" to={'/home'}>Logo</Link>
+          <Link className="logo-container nav-link custom-anchor" to={'/home'}>
+            <FontAwesomeIcon icon="home" />
+          </Link>
         </div>
         <div className="col-md-10">
           <ul className="nav justify-content-end">
@@ -32,13 +34,14 @@ export default function (props) {
       <div className="header-container">
         <div className="row">
           <div className="col-md-2">
-            <Link className="logo-container nav-link custom-anchor" to={'/home'}>Logo</Link>
+            <Link className="logo-container nav-link custom-anchor" to={'/home'}>
+              <FontAwesomeIcon icon="home" />
+            </Link>
           </div>
           <div className="col-md-10">
             <ul className="nav justify-content-end">
               <li className="nav-item">
                 <Link className="nav-link custom-anchor" to={'/boards'}>
-                  <FontAwesomeIcon icon="person-booth" />
                   Kevin
                 </Link>
               </li>
