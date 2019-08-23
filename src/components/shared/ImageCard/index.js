@@ -49,7 +49,6 @@ class CardImage extends React.Component {
   }
 
   componentDidMount() {
-    // this.setState({loading : true});
     axios.get(`https://picsum.photos/v2/list`)
       .then(res => {
         const persons = res.data;
@@ -60,10 +59,6 @@ class CardImage extends React.Component {
         }, 3000);
       })
   };
-  // useEffect(() => {
-  //   // Actualiza el título del documento usando la API del navegador
-  //   document.title = `You clicked ${count} times`;
-  // });
 
   render() {
     console.log('Random number', randomIdImage())

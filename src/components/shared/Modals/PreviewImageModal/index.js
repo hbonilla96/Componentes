@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import SavePinToBoard from '@/redux/ActionCreators/SavePin';
+// import SavePinToBoard from '@/redux/ActionCreators/SavePin';
+import { savePinToBoard } from '@/redux/ActionCreators';
 import { NewTableModal } from '@/components/shared/Modals';
+import boardsExamples from '@/constants/Boards';
 
 import {
   Button,
@@ -19,14 +21,14 @@ import './styles.css';
 const mapStateToProps = (state, ownProps) => {
   console.log(ownProps)
   return {
-    pins: state.login.login,
-    isLoading: state.login.isLoading,
-    error: state.login.error
+    pins: state.pins.pins,
+    isLoading: state.pins.isLoading,
+    error: state.pins.error
   }
 }
 
 const mapDispatchToProps = {
-  SavePinToBoard
+  savePinToBoard
 }
 
 class PreviewImageModal extends React.Component {
@@ -35,10 +37,14 @@ class PreviewImageModal extends React.Component {
     this.state = {
       modals: {
         table: false,
-      }
+      },
+      boards: '',
     };
   }
 
+  componentDidMount() {
+    boardsExamples.unshift({ name: 'Select board' })
+  }
   openTableModal = () => {
     this.setState({
       modals: {
@@ -47,9 +53,23 @@ class PreviewImageModal extends React.Component {
     })
   }
 
+  handleBoardChange = (e) => {
+    this.setState({
+      board: e.target.value
+    })
+  }
+
+  handleSavePin = () => {
+    const pinSelected = {
+      board: this.state.board,
+      ...this.props.image
+    }
+    this.props.savePinToBoard(pinSelected);
+    this.props.toggle();
+  }
+
 
   render() {
-    console.log('props modal', this.props);
     return (
       <div>
         <Modal size="lg" isOpen={this.props.modal} toggle={this.toggle} className={this.props.className}>
@@ -66,12 +86,12 @@ class PreviewImageModal extends React.Component {
                 <div className="col-md-6">
                   <Form>
                     <Label htmlFor="exampleSelect">Select Board</Label>
-                    <Input type="select" name="select" id="exampleSelect">
-                      <option>Forest</option>
-                      <option>Space</option>
-                      <option>Beach</option>
-                      <option>Home</option>
-                      <option>Other</option>
+                    <Input type="select" name="select" id="exampleSelect" onChange={this.handleBoardChange}>
+                      {
+                        boardsExamples.map((el, i) => (
+                          <option key={i}>{el.name}</option>
+                        ))
+                      }
                     </Input>
                   </Form>
                   <p>Or Create new board</p>
@@ -81,7 +101,7 @@ class PreviewImageModal extends React.Component {
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={this.props.SavePinToBoard}>Pin Image</Button>{' '}
+            <Button color="primary" onClick={this.handleSavePin}>Pin Image</Button>{' '}
             <Button color="secondary" onClick={this.props.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>

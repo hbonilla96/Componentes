@@ -1,32 +1,31 @@
 import {
-  SAVE_PIN_REQUEST,
-  SAVE_PIN_SUCCESS,
-  SAVE_PIN_FAILURE,
+  CREATE_BOARD_REQUEST,
+  CREATE_BOARD_SUCCESS,
+  CREATE_BOARD_FAILURE,
 } from "@/redux/Actions/types";
 
 const INITIAL_STATE = {
   board: [],
   isLoading: false,
   error: "",
-  pins: [],
 };
 
-function savePinToBoardReducer(state = INITIAL_STATE, action) {
+function pinsReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case SAVE_PIN_REQUEST:
+    case CREATE_BOARD_REQUEST:
       return {
         ...state,
         isloading: true,
         error: false,
       };
-    case SAVE_PIN_SUCCESS:
+    case CREATE_BOARD_SUCCESS:
       return {
         ...state,
-        pins: action.payload,
+        board: [...state.board, action.payload],
         error: false,
         isLoading: false
       };
-    case SAVE_PIN_FAILURE:
+    case CREATE_BOARD_FAILURE:
       return {
         ...state,
         error: action.error,
@@ -37,4 +36,4 @@ function savePinToBoardReducer(state = INITIAL_STATE, action) {
   }
 }
 
-export default savePinToBoardReducer;
+export default pinsReducer;

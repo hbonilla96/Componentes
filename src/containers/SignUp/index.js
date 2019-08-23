@@ -65,8 +65,8 @@ class SignUp extends React.Component {
         <div className="signUp-main--container">
           <div className="main-container--opacity">
             <div className="container-fluid">
-              <div className="row justify-content-center">
-                <div className="col-4">
+              <div className="row justify-content-end">
+                <div className="col-5">
                   <div className="login-container">
                     <div className="row">
                       <div className="col-md-12">

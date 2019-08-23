@@ -1,5 +1,5 @@
 .login-main--container {
-  background-image: url('../../../src/assets/images/Van-Driving-Through-Mountains.jpg');
+  background-image: url('../../../src/assets/images/mother-day-background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 95vh;
@@ -15,8 +15,8 @@
   margin-top: 3em;
   padding: 6em 16% 10em 12%;
   border: 1px solid #bd96eb;
-  border-radius: 2%;
-  background-color: rgba(255, 255, 255, 1);
+  border-radius: 3%;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .forgot-password--link {

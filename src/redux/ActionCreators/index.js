@@ -1,4 +1,4 @@
-import { savePinToBoard } from './SavePin';
+import savePinToBoard from './Pins/SavePin';
 
 export {
   savePinToBoard,

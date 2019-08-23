@@ -1,5 +1,5 @@
 .signUp-main--container {
-  background-image: url('../../../src/assets/images/beautiful-day-at-the-beach.jpg');
+  background-image: url('../../../src/assets/images/pink-tulips-on-wood-texture.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   height: 95vh;
@@ -13,10 +13,11 @@
 
 .login-container {
   margin-top: 3em;
+  margin-right: 15%;
   padding: 6em 16% 10em 12%;
   border: 1px solid #bd96eb;
-  border-radius: 2%;
-  background-color: rgba(255, 255, 255, 1);
+  border-radius: 3%;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .forgot-password--link {
