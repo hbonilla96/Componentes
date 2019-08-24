@@ -7,3 +7,14 @@
   background-color: rgb(75, 53, 100);
   border-color: #79589F;  
 }
+
+.btn-outline-primary {
+  color: #79589F;
+  border-color: #79589F; 
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: rgb(130, 94, 172);
+  border-color: #79589F; 
+}

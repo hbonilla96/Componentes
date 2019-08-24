@@ -6,7 +6,7 @@ import {
 
 import './styles.css';
 
-export default () => {
+export default (props) => {
   return (
     <Card className="card-individual--element">
       <CardBody>
@@ -40,8 +40,8 @@ export default () => {
             </div>
           </div>
         </div>
-        <CardTitle>Board Title</CardTitle>
-        <CardSubtitle>8 pins</CardSubtitle>
+        <CardTitle>{props.item.name}</CardTitle>
+        <CardSubtitle>pins</CardSubtitle>
       </CardBody>
     </Card>
   )
