@@ -23,7 +23,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     pins: state.pins.pins,
     isLoading: state.pins.isLoading,
-    error: state.pins.error
+    error: state.pins.error,
+    boards: state.boards.board
   }
 }
 
@@ -54,8 +55,11 @@ class PreviewImageModal extends React.Component {
   }
 
   handleBoardChange = (e) => {
+    const boardElement = this.props.boards.find(el => {
+      return el.name === e.target.value;
+    })
     this.setState({
-      board: e.target.value
+      board: boardElement
     })
   }
 
@@ -88,7 +92,7 @@ class PreviewImageModal extends React.Component {
                     <Label htmlFor="exampleSelect">Select Board</Label>
                     <Input type="select" name="select" id="exampleSelect" onChange={this.handleBoardChange}>
                       {
-                        boardsExamples.map((el, i) => (
+                        this.props.boards.map((el, i) => (
                           <option key={i}>{el.name}</option>
                         ))
                       }
